@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Óptica UCBITO - Formulario de Pedidos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <img src="media/logo_ucbito.png" alt="Logo Óptica UCBITO" height="50px">
+        <h1>OPTICA UCBITO</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="realizarpedido.html">Realizar pedido</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="paginas">
+        <div class="paginas-texto">
+            <h1>Formulario de pedidos</h1>
+        </div>
+    </section>
+
+    <section class="form">
+        <form id="pedidoForm">
+            <h2>Datos personales</h2>
+            <table class="datos">
+                <tr>
+                    <td><label for="nombre">Nombres y Apellidos:</label></td>
+                    <td><input type="text" id="nombre" name="nombre" required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Correo Electrónico:</label></td>
+                    <td><input type="email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="telefono">Número de Celular:</label></td>
+                    <td><input type="tel" id="telefono" name="telefono" required></td>
+                </tr>
+            </table> 
+
+            <h2>Datos del lente</h2>
+            <table>
+                <tr>
+                    <td><label for="montura">Selecciona Montura:</label></td>
+                    <td>
+                        <select id="montura" name="montura" required>
+                            <option value="Montura 1">Montura 1</option>
+                            <option value="Montura 2">Montura 2</option>
+                            <option value="Montura 3">Montura 3</option>
+                            <option value="Montura 4">Montura 4</option>
+                            <option value="Montura 5">Montura 5</option>
+                            <option value="Montura 6">Montura 6</option>
+                            <option value="Montura 7">Montura 7</option>
+                            <option value="Montura 8">Montura 8</option>
+                            <option value="Montura 9">Montura 9</option>
+                            <option value="Montura 10">Montura 10</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="tipoVidrio">Selecciona Tipo de Vidrio:</label></td>
+                    <td>
+                        <select id="tipoVidrio" name="tipoVidrio" required>
+                            <option value="Tipo Vidrio 1">Tipo Vidrio 1</option>
+                            <option value="Tipo Vidrio 2">Tipo Vidrio 2</option>
+                            <option value="Tipo Vidrio 3">Tipo Vidrio 3</option>
+                            <option value="Tipo Vidrio 4">Tipo Vidrio 4</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="diotria">¿Tiene las medidas de tu diotría?</label></td>
+                </tr>
+                <tr>
+                    <td><input type="radio" id="dioptriaSi" name="dioptria" value="si" required> Sí</td>
+                    <td><input type="radio" id="dioptriaNo" name="dioptria" value="no"> No</td>
+                </tr>
+            </table>
+            
+            <div id="dioptriaInputs" style="display:none;">
+                <table>
+                    <tr>
+                        <td><label for="ojoDerecho">Ojo Derecho:</label></td>
+                        <td><input type="text" id="ojoDerecho" name="ojoDerecho"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="ojoIzquierdo">Ojo Izquierdo:</label></td>
+                        <td><input type="text" id="ojoIzquierdo" name="ojoIzquierdo"></td>
+                    </tr>
+                </table> 
+            </div>
+
+            <div id="citaSection" style="display:none;">
+                <h2>Datos para la cita</h2>
+                <table>
+                    <tr>
+                        <td><label for="fechaCita">Fecha para agendar cita:</label></td>
+                        <td><input type="date" id="fechaCita" name="fechaCita"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="horaCita">Hora:</label></td>
+                        <td><input type="time" id="horaCita" name="horaCita"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2>Datos de la entrega</h2>
+            <table>
+                <tr>
+                    <td><label for="entrega">Tipo de Entrega:</label></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="radio" id="domicilio" name="entrega" value="domicilio" required> Realizar entrega a domicilio</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="radio" id="tienda" name="entrega" value="tienda"> Recoger en tienda</td>
+                </tr>
+            </table>
+
+            
+        
+            <div id="domicilioInputs" style="display:none;">
+                <table>
+                    <tr>
+                        <td><label for="ciudad">Selecciona Ciudad:</label></td>
+                        <td>
+                            <select id="ciudad" name="ciudad">
+                                <option value="La Paz">La Paz</option>
+                                <option value="Oruro">Oruro</option>
+                                <option value="Potosí">Potosí</option>
+                                <option value="Santa Cruz">Santa Cruz</option>
+                                <option value="Cochabamba">Cochabamba</option>
+                                <option value="Tarija">Tarija</option>
+                                <option value="Beni">Beni</option>
+                                <option value="Pando">Pando</option>
+                                <option value="Sucre">Sucre</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="direccion">Dirección:</label></td>
+                        <td><input type="text" id="direccion" name="direccion"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <table>
+                <tr>
+                    <td><label for="especificaciones">Especificaciones/Recomendaciones:</label></td>
+                    <td><input type="text" id="especificaciones" name="especificaciones"></td>
+                </tr>
+            </table>
+            <center>
+                <input type="submit" value="Enviar">
+            </center>
+            
+        </form>
+    </section>
+
+    <footer>
+        <table width="100%">
+            <tr>
+                <td align="center">
+                    <h3>Tecnologías Web SIS-241<br>
+                    Gabriela Teresa Barrios Michel<br>
+                    ©2024</h3>
+                </td>
+                <td align="center">
+                    <h3>Encuéntranos en:</h3>
+                    <a href="https://www.instagram.com" target="_blank">
+                        <img src="media/instagram_icon.png" alt="Instagram" height="50px">
+                    </a>
+                    <a href="https://www.facebook.com" target="_blank">
+                        <img src="media/facebook_icon.png" alt="Facebook" height="50px">
+                    </a>
+                    <a href="https://www.twitter.com" target="_blank">
+                        <img src="media/x_logo.jpg" alt="X" height="50px">
+                    </a>
+                    <a href="https://www.tiktok.com" target="_blank">
+                        <img src="media/tiktok_icon.png" alt="TikTok" height="50px">
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </footer>    
+    
+    <script>
+        const dioptriaSi = document.getElementById('dioptriaSi');
+        const dioptriaNo = document.getElementById('dioptriaNo');
+        const dioptriaInputs = document.getElementById('dioptriaInputs');
+        const citaSection = document.getElementById('citaSection');
+
+        dioptriaSi.addEventListener('change', function() {
+            if (dioptriaSi.checked) {
+                dioptriaInputs.style.display = 'block';
+                citaSection.style.display = 'none';
+            }
+        });
+
+        dioptriaNo.addEventListener('change', function() {
+            if (dioptriaNo.checked) {
+                dioptriaInputs.style.display = 'none';
+                citaSection.style.display = 'block';
+            }
+        });
+
+        const domicilio = document.getElementById('domicilio');
+        const tienda = document.getElementById('tienda');
+        const domicilioInputs = document.getElementById('domicilioInputs');
+
+        domicilio.addEventListener('change', function() {
+            if (domicilio.checked) {
+                domicilioInputs.style.display = 'block';
+            }
+        });
+
+        tienda.addEventListener('change', function() {
+            if (tienda.checked) {
+                domicilioInputs.style.display = 'none';
+            }
+        });
+
+        document.getElementById('pedidoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const telefono = document.getElementById('telefono').value;
+            const dioptria = dioptriaSi.checked ? "Sí" : "No";
+            const ojoDerecho = document.getElementById('ojoDerecho').value;
+            const ojoIzquierdo = document.getElementById('ojoIzquierdo').value;
+            const fechaCita = document.getElementById('fechaCita').value;
+            const horaCita = document.getElementById('horaCita').value;
+            const montura = document.getElementById('montura').value;
+            const tipoVidrio = document.getElementById('tipoVidrio').value;
+            const entrega = domicilio.checked ? "Domicilio" : "Tienda";
+            const ciudad = document.getElementById('ciudad').value;
+            const direccion = document.getElementById('direccion').value;
+            const especificaciones = document.getElementById('especificaciones').value;
+
+            doc.text(20, 20, 'DATOS PERSONALES');
+            doc.text(20, 30, `Nombres y Apellidos: ${nombre}`);
+            doc.text(20, 40, `Correo Electrónico: ${email}`);
+            doc.text(20, 50, `Número de Celular: ${telefono}`);
+            doc.text(20, 70, 'DATOS PARA EL LENTE');
+            doc.text(20, 80, `Selecciona Montura: ${montura}`);
+            doc.text(20, 90, `Selecciona Tipo de Vidrio: ${tipoVidrio}`);
+            doc.text(20, 100, `¿Tienes las medidas de tu dioptría?: ${dioptria}`);
+            if (dioptriaSi.checked) {
+                doc.text(20, 110, 'DATOS DIOTRIA');
+                doc.text(20, 120, `Ojo Derecho: ${ojoDerecho}`);
+                doc.text(20, 130, `Ojo Izquierdo: ${ojoIzquierdo}`);
+            } else {
+                doc.text(20, 110, 'DATOS CITA PARA LA MEDICION');
+                doc.text(20, 120, `Fecha para agendar cita: ${fechaCita}`);
+                doc.text(20, 130, `Hora: ${horaCita}`);
+            }
+            
+            doc.text(20, 150, `DATOS DE LA ENTREGA`);
+            doc.text(20, 160, `Tipo de Entrega: ${entrega}`);
+            if (domicilio.checked) {
+                doc.text(20, 170, `Ciudad: ${ciudad}`);
+                doc.text(20, 180, `Dirección: ${direccion}`);
+            }
+            doc.text(20, 200, `Especificaciones/Recomendaciones: ${especificaciones}`);
+            
+            alert("PEDIDO REGISTRADO");
+            doc.save("pedido_registrado.pdf");
+        });
+    </script>
+</body>
+</html>
